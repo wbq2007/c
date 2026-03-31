@@ -1,17 +1,30 @@
 #define  _CRT_SECURE_NO_WARNINGS 1
-#include<stdio.h>
-main()
-{
-	int a, b;
-	int add, sub, mul, div;
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
-	scanf("%d%d", &a, &b);
-	add = a + b;
-	sub = a - b;
-	mul = a * b;
-	div = a / b;
-	printf("%d+%d=%d\n", a, b, add);
-	printf("%d-%d=%d\n", a, b, sub);
-	printf("%d*%d=%d\n", a, b, mul);
-	printf("%d/%d=%d\n", a, b, div);
+int main() {
+    int target, guess, attempts = 0;
+    srand(time(NULL));
+    target = rand() % 100 + 1; // 1~100的随机数
+
+    printf("欢迎来到猜数字游戏！我已经选好了1~100之间的一个数字。\n");
+
+    do {
+        printf("请输入你的猜测：");
+        scanf("%d", &guess);
+        attempts++;
+
+        if (guess < target) {
+            printf("太小了！\n");
+        }
+        else if (guess > target) {
+            printf("太大了！\n");
+        }
+        else {
+            printf("恭喜你，猜对了！你总共猜了%d次。\n", attempts);
+        }
+    } while (guess != target);
+
+    return 0;
 }
